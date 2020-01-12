@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>[钰儿小宝贝]</title>
-    <url>/2020/01/10/%E9%92%B0%E5%84%BF%E5%B0%8F%E5%AE%9D%E8%B4%9D/</url>
-    <content><![CDATA[]]></content>
+    <title>hexo的使用</title>
+    <url>/2020/01/12/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>暂时还没想好怎么写，先放在这吧，以后技术好了再写。</p>
+<h1 id="如何插入图片"><a href="#如何插入图片" class="headerlink" title="如何插入图片"></a>如何插入图片</h1><p>本地source中建立image文件夹，用</p>
+<p>image src=”image/2.jpg”  放入 &lt; &gt;  即可</p>
+<p>比较方便</p>
+<p>看看效果：<br><image src="image/123.jpg"></image></p>
+]]></content>
+      <categories>
+        <category>-hexo</category>
+      </categories>
       <tags>
-        <tag>这是我的第一篇个人博客， 对我来说， 这是个很有纪念意义的名字， 网站用的是我的小可爱的网名， 当然后面还有本人名字的缩写， 希望我的小可爱永远开开心心，笑口常开。</tag>
+        <tag>-hexo</tag>
       </tags>
   </entry>
 </search>
