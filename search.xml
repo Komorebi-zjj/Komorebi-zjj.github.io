@@ -11,7 +11,13 @@
 <h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><p>  用两个<code>*</code>包含的一段文本就是粗体，用一个<code>*</code>包含的一段文本就是斜体，用两个<code>~</code>包含的一段文本就是删除线。<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*倾斜的字体*</span><br><span class="line">**粗体文字**</span><br><span class="line">~~删除线~~</span><br></pre></td></tr></table></figure><br>  效果如下：<br>  <em>倾斜的字体</em><br>  <strong>粗体文字</strong><br>  <del>删除线</del></p>
 <h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>使用<code>|</code>来表示表格的框，用<code>:</code>来进行对齐方式，<code>-</code>最少两个。<br><code>:---</code>代表左对齐<br><code>:--:</code>代表居中对齐<br><code>---:</code>代表右对齐</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|:---|:---:|---:|</span><br><span class="line">|A|A|A|</span><br><span class="line">|B|B|B|</span><br></pre></td></tr></table></figure>
-<p>效果如下:<br>|:—|:—:|—:|<br>|A|A|A|<br>|B|B|B|</p>
+<!--
+效果如下:
+
+:---|:---:|---:|
+|A|A|A|
+|B|B|B|
+-->
 <h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>  如果需要加入列表格式，只需要在文字前面加上<code>-</code>就可以了，例如：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 文本1</span><br><span class="line">- 文本2</span><br><span class="line">- 文本3</span><br></pre></td></tr></table></figure><br>  如果需要有序列表，也可以在文字前面加上<code>1.</code> <code>2.</code> <code>3.</code>即可，例如：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 文本1</span><br><span class="line">2. 文本2</span><br><span class="line">3. 文本3</span><br></pre></td></tr></table></figure><br>  要注意<code>-</code> <code>1.</code>和文本之间要保留一个字符的空格。</p>
 <h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>  如果想在自己的文章中加一段引用的话，就需要在引用文字前加上<code>&gt;</code>就好了,<code>&gt;</code>和文本之间也要有一个字符的空格。例如：<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 始于颜值，陷于才华，忠于人品。</span><br></pre></td></tr></table></figure></p>
 ]]></content>
