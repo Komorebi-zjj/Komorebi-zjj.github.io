@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>markdown的使用</title>
-    <url>/2020/02/02/markdown%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/blog/2020/02/02/markdown%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>以后的博客都是按照markdown语法规则，这里备份下markdown的基本语法</p>
 <a id="more"></a>
 
@@ -40,7 +40,7 @@
   </entry>
   <entry>
     <title>hexo的使用</title>
-    <url>/2020/01/13/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <url>/blog/2020/01/13/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>hexo 主题启用以及相关设置</p>
 <blockquote>
 <p>备份个人设置，有些方案手集于互联网</p>
