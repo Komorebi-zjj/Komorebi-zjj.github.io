@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>灰色预测</title>
+    <url>/2020/04/14/%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/</url>
+    <content><![CDATA[<p> <strong>灰色预测</strong>是通过少量的、不完全的信息，建立数学模型做出预测的一种预测方法。<br><a id="more"></a></p>
+<p>灰色预测通过鉴别系统因素之间发展趋势的相异程度，生成有较强规律性的数据序列，然后建立相应的微分方程模型。</p>
+<h1 id="灰色预测模型的预测步骤"><a href="#灰色预测模型的预测步骤" class="headerlink" title="灰色预测模型的预测步骤"></a>灰色预测模型的预测步骤</h1><p>对于$GM(1,1)$模型的预测步骤，设有原始序列：</p>
+<script type="math/tex; mode=display">{x}^{(0)}=({x}^{(0)}(1),{x}^{(0)}(\text{2}),...,{x}^{(0)}(n)) (n为数据个数)</script><p>如果根据${x}^{(0)}$数据列建立$GM(1,1)$来实现预测功能，则基本的步骤如下：</p>
+<ul>
+<li><p>步骤1<br>原始数据累加以便弱化随机序列的波动性和随机性，得到新的数据序列：</p>
+<script type="math/tex; mode=display">{x}^{(0)}=({x}^{(1)}(1),{x}^{(1)}(2),...,{x}^{(1)}(n))</script><p>其中，$x^{1}(t)$中各数据表示对应前几项数据的累加</p>
+<script type="math/tex; mode=display">{x}^{(1)}(t)=\sum\limits_{k=1}^{t}{x}^{(0)}(k), t=1,2,3,...,n</script><p>或</p>
+<script type="math/tex; mode=display">{x}^{(1)}(t+1)=\sum\limits_{k=1}^{t+1}{x}^{(0)}(k),t=1,2,3,...,n</script></li>
+<li><p>步骤2<br>对$x^{1}(t)$建立$x^{1}(t)$的一阶线性微分方程</p>
+<script type="math/tex; mode=display">\frac{d{x}^{(1)}}{dt}+a{x}^{(1)}=\mu</script><p>其中，$a$，$\mu$分别为<code>发展系数</code>和<code>灰色作用量</code>，$a$的有效区间为$(-2,2)$，并记$a$，$\mu$构成的矩阵为$\hat{a}=\left( \begin{matrix} a \\mu\\end{matrix} \right)$。只要求出参数$a$,$\mu$,就能求出${x^{1}}(t)$，进而求出${x}^{(0)}$的未来预测值。</p>
+</li>
+<li><p>步骤3<br>对累加生成数据做均值生成$B$与常数项向量$Y$,即</p>
+<script type="math/tex; mode=display">B=\left[ \begin{matrix}
+ 0.5({x}^{(1)}(1)+{x}^{(1)}(2))  \\
+ 0.5({x}^{(1)}(2)+{x}^{(1)}(3))  \\
+ 0.5({x}^{(1)}(n-1)+{x}^{(1)}(n))  \\
+\end{matrix} \right]</script><script type="math/tex; mode=display">{Y}_{n}={({x}^{(0)}(2)+{x}^{(0)}(3),...,{x}^{(0)}}(n))^{T}</script></li>
+<li><p>步骤4<br>用最小二乘法求解灰参数$\hat{a}$，则</p>
+<script type="math/tex; mode=display">\hat{a}=\left[ \begin{matrix}
+ a  \\
+ \mu   \\
+\end{matrix} \right]=({B}^{T}B)^{-1}{B}^{T}Y</script></li>
+<li><p>步骤5<br>将灰参数$\hat{a}$带入到$\frac{d{x}^{(1)}}{dt}+a{x}^{(1)}=\mu$进行求解，得</p>
+<script type="math/tex; mode=display">\hat{x}^{(1)}(t+1)=({x}^{(0)}(1)-\frac{\mu }{a}){e}^{-at}+\frac{\mu }{a}</script><p>由于$\hat{a}$是通过最小二乘法求出的近似值，所以$\hat{x}^{(1)}(t+1)$函数表达式是一个近似表达式为了与原序列${x}^{(1)}(t+1)$区分开来故记为$\hat{x}^{(1)}(t+1)$。</p>
+</li>
+<li><p>步骤6 对函数表达式$\hat{x}^{(1)}(t+1)$及$\hat{x}^{(1)}(t)$进行离散并将二者做差以便还原${x}^{(0)}$原序列，得到近似数据序列$\hat{x}^{(0)}(t+1)$如下：</p>
+<script type="math/tex; mode=display">\hat{x}^{(0)}(t+1)=\hat{x}^{(1)}(t+1)-\hat{x}^{(1)}(t)</script></li>
+<li><p>步骤7对建立的灰色模型进行检验，步骤如下：</p>
+</li>
+</ul>
+<ol>
+<li>计算${x}^{(0)}$与$\hat{x}^{(0)}(t)$之间的残差${e}^{(0)}(t)$和相对误差$q(x)$：<script type="math/tex; mode=display">{e}^{(0)}(t)={x}^{(0)}-\hat{x}^{(0)}(t)</script><script type="math/tex; mode=display">q(x)={e}^{(0)}(t)/{x}^{(0)}(t)</script></li>
+<li>求原始数据${x}^{(0)}$的均值以及方差${s}_{1}$;</li>
+<li>求${e}^{(0)}(t)$的平均值$\bar{q}$以及残差的方差${s}_{2}$;</li>
+<li>计算方差比$C= \cfrac {s_2} {s_1}$;</li>
+<li>求小误差概率$P=P{\left| e(t) \right|&lt;0.6745{s}_{1}}$;</li>
+<li>灰色模型精度检验表如表所示：</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">等级</th>
+<th style="text-align:center">相对误差$q$</th>
+<th style="text-align:center">方差比$C$</th>
+<th style="text-align:center">小误差概率$P$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$\Iota$级</td>
+<td style="text-align:center">$&lt;0.01$</td>
+<td style="text-align:center">$&lt;0.35$</td>
+<td style="text-align:center">$&gt;0.95$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Iota\Iota$级</td>
+<td style="text-align:center">$&lt;0.05$</td>
+<td style="text-align:center">$&lt;0.50$</td>
+<td style="text-align:center">$&lt;0.80$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Iota\Iota\Iota$级</td>
+<td style="text-align:center">$&lt;0.10$</td>
+<td style="text-align:center">$&lt;0.65$</td>
+<td style="text-align:center">$&lt;0.70$</td>
+</tr>
+<tr>
+<td style="text-align:center">$\Iota \text{V}$级</td>
+<td style="text-align:center">$&gt;0.20$</td>
+<td style="text-align:center">$&gt;0.80$</td>
+<td style="text-align:center">$&lt;0.60$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在实际应用过程中，检验模型精度的方法并不唯一，可以利用上述的方法进行模型的检验，也可以根据$q(x)$的误差百分比并结合预测数据与实际数据之间的测试结果来认定模型是否合理。</p>
+<ul>
+<li>步骤8利用模型进行预测：<script type="math/tex; mode=display">\hat{x}^{(0)}=\left[ \underbrace{\hat{x}^{(0)}(1),{\hat{x}^{(0)}}(2),...,\hat{x}^{(0)}(n)}_{原数列的模拟},\underbrace{\hat{x}^{(0)}(n+1),...,\hat{x}^{(0)}(n+m)}_{未来数列的预测} \right]</script></li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>用一组数据$[5,11,1,65,27,14,0,3,9,4,2]$实现灰色预测的程序：<br><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">syms a b;</span><br><span class="line">c = [a b]';</span><br><span class="line">A = [<span class="number">5</span>,<span class="number">11</span>,<span class="number">1</span>,<span class="number">65</span>,<span class="number">27</span>,<span class="number">14</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">2</span>];</span><br><span class="line">B = cumsum(A);     <span class="comment">%原始数据累加</span></span><br><span class="line">n = <span class="built_in">length</span>(A);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span> : (n<span class="number">-1</span>)</span><br><span class="line">    C(<span class="built_in">i</span>)=(B(<span class="built_in">i</span>)+B(<span class="built_in">i</span>+<span class="number">1</span>))/<span class="number">2</span>;  <span class="comment">%生成累加矩阵</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%计算待定参数的值</span></span><br><span class="line">D = A;D(<span class="number">1</span>) = [];</span><br><span class="line">D = D';</span><br><span class="line">E = [-C;<span class="built_in">ones</span>(<span class="number">1</span>,n<span class="number">-1</span>)];</span><br><span class="line">c = inv(E*E')*E*D;</span><br><span class="line">c = c';</span><br><span class="line">a = c(<span class="number">1</span>); b = c(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%预测后续数据</span></span><br><span class="line">F = []; F(<span class="number">1</span>) = A(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">2</span> : (n+<span class="number">10</span>)</span><br><span class="line">    F(<span class="built_in">i</span>) = (A(<span class="number">1</span>) - b/a)/<span class="built_in">exp</span>(a*(<span class="built_in">i</span><span class="number">-1</span>))+b/a;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">G = []; G(<span class="number">1</span>) = A(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">2</span> : (n+<span class="number">10</span>)</span><br><span class="line">    G(<span class="built_in">i</span>) = F(<span class="built_in">i</span>) - F(<span class="built_in">i</span><span class="number">-1</span>);   <span class="comment">%得到预测出来的数据</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">t1 = <span class="number">6</span>:<span class="number">16</span>;</span><br><span class="line">t2 = <span class="number">6</span>:<span class="number">26</span>;</span><br><span class="line">G; a,b     <span class="comment">%输出预测值，发展系数和灰色作用量</span></span><br><span class="line"><span class="built_in">plot</span>(t1,A,<span class="string">'o'</span>,t2,G);  <span class="comment">%原始数据与预测数据的比较</span></span><br></pre></td></tr></table></figure><br>得到的预测图像为：</p>
+<p><img src="/2020/04/14/%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B/灰色预测.JPEG" alt></p>
+]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markdown编辑数学公式</title>
     <url>/2020/03/16/markdown%E7%BC%96%E8%BE%91%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<p> 本篇文章记录一下<strong>如何在markdown中书写数学公式</strong><br><a id="more"></a></p>
@@ -156,7 +250,7 @@
 <td style="text-align:center"><code>B</code></td>
 <td style="text-align:center">$B$</td>
 <td style="text-align:center"><code>\beta</code></td>
-<td style="text-align:center">$\Beta$</td>
+<td style="text-align:center">$\beta$</td>
 </tr>
 <tr>
 <td style="text-align:center"><code>\Gamma</code></td>
