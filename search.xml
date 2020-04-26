@@ -13,18 +13,27 @@
 <script type="math/tex; mode=display">{x}^{(1)}(t)=\sum\limits_{k=1}^{t}{x}^{(0)}(k), t=1,2,3,...,n</script><p>或</p>
 <script type="math/tex; mode=display">{x}^{(1)}(t+1)=\sum\limits_{k=1}^{t+1}{x}^{(0)}(k),t=1,2,3,...,n</script></li>
 <li><p>步骤2<br>对$x^{1}(t)$建立$x^{1}(t)$的一阶线性微分方程</p>
-<script type="math/tex; mode=display">\frac{d{x}^{(1)}}{dt}+a{x}^{(1)}=\mu</script><p>其中，$a$，$\mu$分别为<code>发展系数</code>和<code>灰色作用量</code>，$a$的有效区间为$(-2,2)$，并记$a$，$\mu$构成的矩阵为$\hat{a}=\left( \begin{matrix} a \\mu\\end{matrix} \right)$。只要求出参数$a$,$\mu$,就能求出${x^{1}}(t)$，进而求出${x}^{(0)}$的未来预测值。</p>
+<script type="math/tex; mode=display">\frac{d{x}^{(1)}}{dt}+a{x}^{(1)}=\mu</script><p>其中，$a$，$\mu$分别为<code>发展系数</code>和<code>灰色作用量</code>，$a$的有效区间为$(-2,2)$，并记$a$，$\mu$构成的矩阵为</p>
 </li>
-<li><p>步骤3<br>对累加生成数据做均值生成$B$与常数项向量$Y$,即</p>
-<script type="math/tex; mode=display">B=\left[ \begin{matrix}
- 0.5({x}^{(1)}(1)+{x}^{(1)}(2))  \\
- 0.5({x}^{(1)}(2)+{x}^{(1)}(3))  \\
- 0.5({x}^{(1)}(n-1)+{x}^{(1)}(n))  \\
-\end{matrix} \right]</script><script type="math/tex; mode=display">{Y}_{n}={({x}^{(0)}(2)+{x}^{(0)}(3),...,{x}^{(0)}}(n))^{T}</script></li>
+</ul>
+<script type="math/tex; mode=display">
+\hat{a}=\left( \begin{matrix} 
+a \\
+\mu \\
+\end{matrix} \right)</script><p>只要求出参数$a$,$\mu$,就能求出${x^{1}}(t)$，进而求出${x}^{(0)}$的未来预测值。</p>
+<ul>
+<li>步骤3<br>对累加生成数据做均值生成$B$与常数项向量$Y$,即</li>
+</ul>
+<script type="math/tex; mode=display">
+B=\left[ \begin{matrix}
+   0.5({x}^{(1)}(1)+{x}^{(1)}(2))  \\
+   0.5({x}^{(1)}(2)+{x}^{(1)}(3))  \\
+   0.5({x}^{(1)}(n-1)+{x}^{(1)}(n))  \\
+\end{matrix} \right]</script><script type="math/tex; mode=display">{Y}_{n}={({x}^{(0)}(2)+{x}^{(0)}(3),...,{x}^{(0)}}(n))^{T}</script><ul>
 <li><p>步骤4<br>用最小二乘法求解灰参数$\hat{a}$，则</p>
 <script type="math/tex; mode=display">\hat{a}=\left[ \begin{matrix}
  a  \\
- \mu   \\
+ \mu  \\
 \end{matrix} \right]=({B}^{T}B)^{-1}{B}^{T}Y</script></li>
 <li><p>步骤5<br>将灰参数$\hat{a}$带入到$\frac{d{x}^{(1)}}{dt}+a{x}^{(1)}=\mu$进行求解，得</p>
 <script type="math/tex; mode=display">\hat{x}^{(1)}(t+1)=({x}^{(0)}(1)-\frac{\mu }{a}){e}^{-at}+\frac{\mu }{a}</script><p>由于$\hat{a}$是通过最小二乘法求出的近似值，所以$\hat{x}^{(1)}(t+1)$函数表达式是一个近似表达式为了与原序列${x}^{(1)}(t+1)$区分开来故记为$\hat{x}^{(1)}(t+1)$。</p>
@@ -54,25 +63,25 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">$\Iota$级</td>
+<td style="text-align:center">1级</td>
 <td style="text-align:center">$&lt;0.01$</td>
 <td style="text-align:center">$&lt;0.35$</td>
 <td style="text-align:center">$&gt;0.95$</td>
 </tr>
 <tr>
-<td style="text-align:center">$\Iota\Iota$级</td>
+<td style="text-align:center">2级</td>
 <td style="text-align:center">$&lt;0.05$</td>
 <td style="text-align:center">$&lt;0.50$</td>
 <td style="text-align:center">$&lt;0.80$</td>
 </tr>
 <tr>
-<td style="text-align:center">$\Iota\Iota\Iota$级</td>
+<td style="text-align:center">3级</td>
 <td style="text-align:center">$&lt;0.10$</td>
 <td style="text-align:center">$&lt;0.65$</td>
 <td style="text-align:center">$&lt;0.70$</td>
 </tr>
 <tr>
-<td style="text-align:center">$\Iota \text{V}$级</td>
+<td style="text-align:center">4级</td>
 <td style="text-align:center">$&gt;0.20$</td>
 <td style="text-align:center">$&gt;0.80$</td>
 <td style="text-align:center">$&lt;0.60$</td>
