@@ -75,7 +75,8 @@ W=\left\{ \begin{matrix}
    .  \\
    .  \\
    {W}_{n}  \\
-\end{matrix} \right\}</script><h1 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h1><p>为了确保判断数值前后的一致性，也为了避免数据矛盾造成特征根发生变化，对计算的结果及决策的精确性造成影响，在得到比较矩阵后，需要对矩阵中的数据进行一致性检验。在检验时，使用一致性指标$CI$、随机一致性指标$RI$和一致性比例$CR$来比较判断矩阵中的最大特征根$\lambda<em>{\max}$ 及对应的特征向量是否前后保持一致，进而得出检验结果。计算最大特征根$\lambda </em>{\max}$ ：</p>
+\end{matrix} \right\}</script><h1 id="一致性检验"><a href="#一致性检验" class="headerlink" title="一致性检验"></a>一致性检验</h1><p>为了确保判断数值前后的一致性，也为了避免数据矛盾造成特征根发生变化，对计算的结果及决策的精确性造成影响，在得到比较矩阵后，需要对矩阵中的数据进行一致性检验。在检验时，使用一致性指标$CI$、随机一致性指标$RI$和一致性比例$CR$来比较判断矩阵中的最大特征根$\lambda_{\max}$ 及对应的特征向量是否前后保持一致，进而得出检验结果。</p>
+<p>计算最大特征根$\lambda_{\max}$：</p>
 <script type="math/tex; mode=display">\lambda_{\max }=\frac{1}{n}\sum\limits_{i=1}^n\frac{(AW)_i}{W_i}</script><p>一致性比例$CR$:</p>
 <script type="math/tex; mode=display">CR=\frac{CI}{RI}</script><p>当$CR<0.1$时，则通过一致性检验，如果$CR>0.1$，则一致性检验不通过，需要重新构建判断矩阵。</0.1$时，则通过一致性检验，如果$CR></p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>以与大流行病相关的感染数量，病死人数，疫情持续时间等因素进行层次分析为例：</p>
