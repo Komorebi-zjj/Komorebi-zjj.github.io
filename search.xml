@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>蒙特卡洛算法</title>
+    <url>/2020/08/11/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p><strong>蒙特卡洛方法</strong>是一个以概率模型为基础，利用计算机通过多次反复模拟实验完成问题求解的一种数值计算方法。他特别适用于传统的解析法难以解决甚至无法解决的问题。本文主要介绍蒙特卡洛方法及基本原理，并通过实例说明蒙特卡洛方法在实际中的应用。<br><a id="more"></a></p>
+<h1 id="蒙特卡洛方法及基本原理"><a href="#蒙特卡洛方法及基本原理" class="headerlink" title="蒙特卡洛方法及基本原理"></a>蒙特卡洛方法及基本原理</h1><h2 id="实验方法"><a href="#实验方法" class="headerlink" title="实验方法"></a>实验方法</h2><p>如图1所示</p>
+<p><img src="/2020/08/11/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E7%AE%97%E6%B3%95/蒲丰投针试验.jpg" alt="图1 蒲丰投针试验"></p>
+<p>在平面上画出一组平行线，他们之间的距离是$a$，并找一根粗细均匀，长度为$l(l&lt;a)$的细针，然后将小针一次次地任意投掷在平面上。这样反复投掷多次，记录下针与这组平行线中任意一条相交的次数，就可以计算出$\pi$的近似值。</p>
+<h2 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h2><p>设针的中点与最近一条平行线间的距离为$x$、针与直线的夹角为$\varphi$，如图1，显然样本空间为</p>
+<script type="math/tex; mode=display">\Omega \text{=}\left\{ (\varphi ,x):x\in [0,\frac{a}{2}],\varphi \in [0,\pi ] \right\}</script><p><img src="/2020/08/11/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E7%AE%97%E6%B3%95/蒲丰投针试验原理.jpg" alt="图2 蒲丰投针试验原理"><br>以G表示边长为$\frac{a}{2}$与$\pi$的长方形如图2，其面积为$S(G)=\frac{a\pi}{2}$,针与平行线相交当且仅当$x\le \frac{l}{2}\sin \varphi$</p>
+<p>设在$G$中满足这个关系式的区域为$g$，即图2中阴影部分，是事件发生的样本点的集合，其面积为</p>
+<script type="math/tex; mode=display">S(g)=\int_{0}^{\pi }{\frac{l}{2}\sin \varphi d,\varphi =l}</script><p>由几何概率定义，得细针与平行线相交的概率为</p>
+<script type="math/tex; mode=display">p=\frac{S(g)}{S(G)}=\frac{2l}{a\pi}</script><p>蒲丰投针问题有一些重要的应用，其中，关于圆周率$\pi$的计算最重要。记$N$为投针中的试验次数，$n$为针与平行线相交的次数，$\frac{n}{N}$则为细针与平行线相交的频率。由概率论的大数定理，当试验次数足够多时，可将事件发生的频率看作事件发生的概率的近似值。即$\frac{2l}{a\pi }\approx \frac{n}{N}$ ，于是得到$\pi \approx \frac{2lN}{an}$</p>
+<p>蒲丰投针试验揭示了蒙特卡罗方法的基本思想，即在大数定理的保证下，利用事件发生的“频率”作为事件发生的“概率’的近似值。只要设计一个随机试验，使一个事件的概率与某未知数有关，然后通过重复试验，以频率近似值表示概率，即可求得该未知数的近似值。显然利用随机试验求近似解，试验次数要相当多才行，且次数越多近似效果也越好。多次重复试验费时费力，非常麻烦。然而，随着计算机的出现，人们便开始利用计算机模拟所设计的随机试验，使得这种方法得到迅速发展和广泛应用，诸如解微分方程，求多重积分，求特征值等。</p>
+<h1 id="蒙特卡洛方法的步骤"><a href="#蒙特卡洛方法的步骤" class="headerlink" title="蒙特卡洛方法的步骤"></a>蒙特卡洛方法的步骤</h1><p>蒙特卡洛方法是一种应用随机数来进行计算机模拟的方法，对研究的系统进行随机观察抽样，通过对样本值的观察统计，求得所研究系数的某些参数。</p>
+<p>蒙特卡洛方法的三个主要步骤：</p>
+<ol>
+<li>描述或构造概率过程：对于已有的随机性质问题可描述和模拟这个概率过程，对于不具有随机性质的确定性问题，需要人为地构造一个概率过程。</li>
+<li>利用概率分布抽样：通过计算机产生已知概率分布的随机变量，常用的概率分布有均匀分布，正态分布、指数分布、泊松分布等。</li>
+<li>建立各种估计量：构造了随机概率模型，并从中抽样后，就要确定一个随机变量，作为所要求问题的解。一般是把 次随机抽样结果的算术平均值作为解的近似值。</li>
+</ol>
+<p>其中产生已知概率分布的随机变量是蒙特卡洛方法的重点步骤，当不知道随机变量的概率模型服从那个分布时，可以使用均匀分布来构造；各种测量的误差、射击命中率、人的身高与体重等服从正态分布；指数分布在排队论与可靠性分析中有着广泛的应用；泊松分布在产品检验、排队系统、物理等领域有广泛的应用。</p>
+<h1 id="蒙特卡洛方法的实际用例"><a href="#蒙特卡洛方法的实际用例" class="headerlink" title="蒙特卡洛方法的实际用例"></a>蒙特卡洛方法的实际用例</h1><h2 id="1-问题的提出"><a href="#1-问题的提出" class="headerlink" title="1.问题的提出"></a>1.问题的提出</h2><p>某食品加工厂主要生产即食产品，一般当天生产的产品必须当天售出，否则就会出现不能保质、或变质、造成一定的经济损失，如果市场需求量大而生产量不足，则也会影响工厂的销售收入，该产品的单位成本为$1.5$元，单位产品售价为$4$元。工厂为了避免产品滞销存货过多而造成的经济损失，提出了如何制定合理的生产与库存数量的方案问题，能够使得工厂能有尽可能多的收益，经初步考虑拟从以下两种生产与库存方案中选出一个较好的方案：</p>
+<p>方案(1)：按前一天的销售量作为当天的生产库存量。</p>
+<p>方案(2)：按前两天的平均销售量作为当天的生产库存量。</p>
+<h2 id="2-问题的分析与假设及参数定义"><a href="#2-问题的分析与假设及参数定义" class="headerlink" title="2.问题的分析与假设及参数定义"></a>2.问题的分析与假设及参数定义</h2><p>实际中的问题，生产与库存多了，销售不出去会造成经济损失，生产与库存少了不能满足需求也会造成一定的损失，工厂需要依据实际不确定的需求量来制定合理的生产与库存方案，使得能有尽量大的经济收益。</p>
+<p>解决问题的基本思路：利用蒙特卡罗方法随机模拟市场对该产品需求量，统计计算出按照两种不同方案$T$天后工厂的经济值，比较不同方案经济效益的大小，选出一个较好的方案。</p>
+<p>假设市场对该产品的每天需求数量是一个随机变量，从统计学的角度分析得知，该随机变量服从正态分布$N(1500,{30}^{2})$，为了编程实现问题的目标，引入如下的变量：</p>
+<p>本文中参数符号定义：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$T$</td>
+<td style="text-align:center">模拟天数</td>
+</tr>
+<tr>
+<td style="text-align:center">$C$</td>
+<td style="text-align:center">每天的需求量</td>
+</tr>
+<tr>
+<td style="text-align:center">$KC1$</td>
+<td style="text-align:center">方案(1)当天的生产与库存量</td>
+</tr>
+<tr>
+<td style="text-align:center">$KC2$</td>
+<td style="text-align:center">方案(2)当天的生产和库存量</td>
+</tr>
+<tr>
+<td style="text-align:center">$S1$</td>
+<td style="text-align:center">方案(1)前一天的销售量</td>
+</tr>
+<tr>
+<td style="text-align:center">$S21$</td>
+<td style="text-align:center">方案(2)前一天的销售量</td>
+</tr>
+<tr>
+<td style="text-align:center">$S22$</td>
+<td style="text-align:center">方案(2)前二天的销售量</td>
+</tr>
+<tr>
+<td style="text-align:center">$ST1$</td>
+<td style="text-align:center">方案(1)当天的实际销售量</td>
+</tr>
+<tr>
+<td style="text-align:center">$ST2$</td>
+<td style="text-align:center">表示方案(2)当天的实际销售量</td>
+</tr>
+<tr>
+<td style="text-align:center">$L1$</td>
+<td style="text-align:center">方案(1)当天的实际利润</td>
+</tr>
+<tr>
+<td style="text-align:center">$L2$</td>
+<td style="text-align:center">方案(2)当天的实际利润</td>
+</tr>
+<tr>
+<td style="text-align:center">$LS1$</td>
+<td style="text-align:center">方案(1)实际累计总利润</td>
+</tr>
+<tr>
+<td style="text-align:center">$LS2$</td>
+<td style="text-align:center">方案(2)实际累计总利润</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-模型的建立与求解"><a href="#3-模型的建立与求解" class="headerlink" title="3.模型的建立与求解"></a>3.模型的建立与求解</h2><p>根据上面的分析，利用蒙特卡洛方法编程实现，主要随机模拟前一天和前两天的各种不同的销售量，来确定当天的生产与库存量，依据可能的实际销售量，计算出当天的销售利润，选择使连续几天利润尽可能大的方案，下面给$MATLAB$程序。</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%建立蒙特卡洛方法的M文件，函数名：mcun.m</span></span><br><span class="line">Function  [LS1,LS2]=mcun(T,S1,S21,S22)</span><br><span class="line">      LS1=<span class="number">0</span>;LS2=<span class="number">0</span>;k=<span class="number">1</span>;</span><br><span class="line">      While  k&lt;T</span><br><span class="line">       KC1=S1;</span><br><span class="line">       KC2=(S21+S22)/<span class="number">2</span>;</span><br><span class="line">       C=normrnd(<span class="number">1500</span>,<span class="number">30</span>*<span class="number">30</span>)</span><br><span class="line">       <span class="keyword">if</span>   C&lt;KC1</span><br><span class="line">          ST1=KC1;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">          ST1=C;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">       <span class="keyword">if</span>  C&lt;KC2</span><br><span class="line">          ST2=KC2;</span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">           ST2=C;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">  L1=<span class="number">4</span>*ST1—<span class="number">1.5</span>*KC1;</span><br><span class="line">  L2=<span class="number">4</span>*ST2—<span class="number">1.5</span>*KC2;</span><br><span class="line">  LS1=LS1+L1;</span><br><span class="line">  LS2=LS2+L2;</span><br><span class="line">  k=k+<span class="number">1</span>;</span><br><span class="line">  endS1=ST1:S22=S21;S21=ST2;</span><br><span class="line"></span><br><span class="line">  <span class="comment">%调用函数mcun(T,S1,S21,S22)</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-模型的结果分析与推广"><a href="#4-模型的结果分析与推广" class="headerlink" title="4.模型的结果分析与推广"></a>4.模型的结果分析与推广</h2><p>在$MATLAB$命令窗口多次输入参数$T,S1,S21,S22$的数值，分别调用函数$meun(T,S1,S21,S22)$，进行求解计算，并对结果进行分析，由若干次模拟实演的结果可以看出，方案(1)的利润总是小于方案(2)的利润，所以该工厂实际按方案(2)进行组织生产与库存，工厂会有更好的经济效益。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 卫艳荣，黄瑞芳.蒙特卡洛方法在数学建模中的应用.南昌教育学院学报.2012</p>
+]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>经典排序算法总结</title>
     <url>/2020/05/25/%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<blockquote>
